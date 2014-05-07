@@ -41,11 +41,11 @@ RESET="\[\033[0m\]"
 
 # If you define HOST_AND_NAME you can override the default
 # of name@hostname
-if [[ -z "$HOST_AND_NAME" ]]; then
-    HOST_AND_NAME="$GREEN\u@\h$RESET"
+if [[ -z "$PROMPT_COLOR" ]]; then
+    PROMPT_COLOR="$GREEN"
 fi
 
-PS1="\033[\${LINES};0H${HOST_AND_NAME} \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
+PS1="\033[\${LINES};0H${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
 
 # Env variables
 export PYTHONDONTWRITEBYTECODE=1
