@@ -21,10 +21,18 @@ link_files() {
 }
 
 install_dotfiles() {
+	reinstall=false
+	if [ $1 == 'reinstall' ]; then
+		reinstall=true
+	fi
 	for source in $(find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink); do
 		dest="$HOME/.$(basename ${source%.*})"
 		if [ -d $source ]; then
-			rm -rf $dest
+			if ${reinstall}; then
+				rm -rf $dest
+			else
+				mv $dest $dest.bak
+			fi
 			source=$source/
 		fi
 		link_files $source $dest
@@ -32,7 +40,7 @@ install_dotfiles() {
 }
 
 main() {
-	install_dotfiles
+	install_dotfiles $1
 }
 
-main
+main $@
