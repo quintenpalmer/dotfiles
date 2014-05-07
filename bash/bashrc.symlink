@@ -39,8 +39,14 @@ GREEN="\[\033[32m\]"
 PURPLE="\[\033[35m\]"
 RESET="\[\033[0m\]"
 
+# If you define HOST_AND_NAME you can override the default
+# of name@hostname
+if [[ -z "$HOST_AND_NAME" ]]; then
+    HOST_AND_NAME="$GREEN\u@\h$RESET"
+fi
+
 lines=$(tput lines)
-PS1="\033[${lines};0H$GREEN\u$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
+PS1="\033[${lines};0H${HOST_AND_NAME} \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
 
 # Env variables
 export PYTHONDONTWRITEBYTECODE=1
