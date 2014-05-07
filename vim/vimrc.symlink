@@ -1,0 +1,94 @@
+" Configuration file for vim
+
+" X clipboard
+set clipboard=unnamedplus
+
+" Don't read modelines to avoid potentially malicious commands
+set modelines=0
+
+" We're using vim, not vi!
+set nocompatible
+
+" Smarter backspace
+set backspace=indent,eol,start
+
+" Don't save a backup file
+set nobackup
+
+" Save a viminfo file, max length 1000 registers
+set viminfo='20,\"1000
+
+" Save 100 lines of history
+set history=100
+
+" Always show the cursor position
+set ruler
+
+" Enable syntax highlighting
+syntax on
+set hlsearch
+
+" Show matching brackets
+set showmatch
+" Case insensitive matching
+"set ignorecase
+" If search has Uppercase letters, it's case sensitive
+"set smartcase
+" Incremental search (as the pattern is typed)
+set incsearch
+
+" Set tab width
+set ts=4
+set sw=4
+set sts=4
+" set expandtab
+
+" Make shift-tab insert real tabs
+" inoremap <S-Tab> <C-V><Tab>
+
+" Persistent undo!
+"if has('persistent_undo')
+"	" So is persistent undo ...
+"	set undofile
+"	" Maximum number of changes that can be undone
+"	set undolevels=1000
+"	" Maximum number lines to save for undo on a buffer reload
+"	set undoreload=10000
+"endif
+
+" Set max number of open buffers to 50
+set tabpagemax=50
+
+" Highlight trailing whitespace
+highlight TrailingWhitespace ctermbg=red guibg=red
+au ColorScheme * highlight TrailingWhitespace ctermbg=red guibg=red
+au BufEnter * match TrailingWhitespace /\s\+$/
+au InsertEnter * match TrailingWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match TrailingWhitespace /\s\+$/
+
+" When editing a file, always jump to the last cursor position
+if has("autocmd")
+ autocmd BufReadPost * if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal g'\"" | endif
+endif
+
+" Make vim autocompletion more like bash
+set wildmode=longest:full
+set wildmenu
+
+" Map space and ctl-space to pageup and pagedown
+map <space> :set scroll=0<CR>:set scroll^=2<CR>:set scroll-=1<CR><C-D>:set scroll=0<CR>
+map <c-@> <c-space>
+map <c-space> :set scroll=0<CR>:set scroll^=2<CR>:set scroll-=1<CR><C-U>:set scroll=0<CR>
+
+" Map ctl-movement to split buffer movement
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+
+" Map H and L to tab buffer movement
+map H :tabp<cr>
+map L :tabn<cr>
+
+" runtimepath for my beautiful haskell
+set runtimepath+=/home/quinten/repos/dag/vim2hs
