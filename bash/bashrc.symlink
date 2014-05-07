@@ -45,8 +45,7 @@ if [[ -z "$HOST_AND_NAME" ]]; then
     HOST_AND_NAME="$GREEN\u@\h$RESET"
 fi
 
-lines=$(tput lines)
-PS1="\033[${lines};0H${HOST_AND_NAME} \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
+PS1="\033[\${LINES};0H${HOST_AND_NAME} \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
 
 # Env variables
 export PYTHONDONTWRITEBYTECODE=1
