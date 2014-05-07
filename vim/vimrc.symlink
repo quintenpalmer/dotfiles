@@ -91,4 +91,10 @@ map H :tabp<cr>
 map L :tabn<cr>
 
 " runtimepath for my beautiful haskell
-set runtimepath+=/home/quinten/repos/dag/vim2hs
+set runtimepath+=~/.dotfiles/vim/vim2hs
+
+let g:haskell_conceal_wide = 0
+let g:haskell_conceal = 0
+let g:haskell_conceal_enumerations = 0
+let g:jmacro_conceal = 0
+set nofoldenable
