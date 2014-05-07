@@ -5,6 +5,14 @@ export NEWHOME=$HOME/.dotfiles
 # Keychain for more pleasant ssh
 eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 
+# use ~/.localrc for local settings that are
+# local per machine and you don't want
+# in your public, versioned repo.
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
 # Add to path
 PATH=$PATH:$NEWHOME/bin/
 PATH=$PATH:/usr/local/share/python
@@ -38,6 +46,3 @@ PS1="\033[${lines};0H$GREEN\u$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $R
 export PYTHONDONTWRITEBYTECODE=1
 export TERM=xterm-color
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages/
-
-# Tactique
-export ROOTIQUE=~/sandbox/Tactique/concierge/repos
