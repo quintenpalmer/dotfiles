@@ -1,0 +1,5 @@
+# .localrc
+
+# Keychain for more pleasant ssh
+eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
+

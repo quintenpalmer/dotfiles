@@ -2,9 +2,6 @@
 
 export NEWHOME=$HOME/.dotfiles
 
-# Keychain for more pleasant ssh
-eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
-
 # use ~/.localrc for local settings that are
 # local per machine and you don't want
 # in your public, versioned repo.
