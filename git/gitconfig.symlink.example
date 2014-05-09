@@ -1,0 +1,21 @@
+# Sample gitconfig
+#
+
+[user]
+    name = AUTHORNAME
+    email = AUTHOREMAIL
+[push]
+    default = current
+[color]
+    ui = auto
+[core]
+    editor = vim
+    pager = less -+F
+    excludesfile = ~/.gitignore
+[alias]
+    loggraph = log --all --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
+    logrange = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
+    logorigin = log --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset' origin/master^..
+
+[merge]
+    tool = vimdiff

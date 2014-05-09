@@ -5,6 +5,15 @@ set -e
 ME=$(basename $0)
 DOTFILES_ROOT="$(dirname $(readlink -f ${ME}))"
 
+info() {
+    printf "  [ \033[00;34m..\033[0m ] $1"
+}
+
+user () {
+    printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+
 success() {
 	printf "\r\033[2K [\033[00;32mOK\033[0m] $1\n"
 }
@@ -13,6 +22,22 @@ fail() {
 	printf "\r\033[2K [\033[00;31mFAIL\033[0m] $1\n"
 	echo ''
 	exit
+}
+
+setup_gitconfig () {
+  if ! [ -f git/gitconfig.symlink ]
+  then
+    info 'setup gitconfig'
+
+    user ' - What is your github author name?'
+    read -e git_authorname
+    user ' - What is your github author email?'
+    read -e git_authoremail
+
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.symlink.example > git/gitconfig.symlink
+
+    success 'gitconfig'
+  fi
 }
 
 link_files() {
@@ -40,6 +65,7 @@ install_dotfiles() {
 }
 
 main() {
+    setup_gitconfig
 	install_dotfiles $1
 }
 
