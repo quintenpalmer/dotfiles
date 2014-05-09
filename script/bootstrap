@@ -15,13 +15,13 @@ user () {
 
 
 success() {
-	printf "\r\033[2K [\033[00;32mOK\033[0m] $1\n"
+    printf "\r\033[2K [\033[00;32mOK\033[0m] $1\n"
 }
 
 fail() {
-	printf "\r\033[2K [\033[00;31mFAIL\033[0m] $1\n"
-	echo ''
-	exit
+    printf "\r\033[2K [\033[00;31mFAIL\033[0m] $1\n"
+    echo ''
+    exit
 }
 
 setup_gitconfig () {
@@ -41,32 +41,32 @@ setup_gitconfig () {
 }
 
 link_files() {
-	ln -sf $1 $2
-	success "linked $1 to $2"
+    ln -sf $1 $2
+    success "linked $1 to $2"
 }
 
 install_dotfiles() {
-	reinstall=false
-	if [ $1 == 'reinstall' ]; then
-		reinstall=true
-	fi
-	for source in $(find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink); do
-		dest="$HOME/.$(basename ${source%.*})"
-		if [ -d $source ]; then
-			if ${reinstall}; then
-				rm -rf $dest
-			else
-				mv $dest $dest.bak
-			fi
-			source=$source/
-		fi
-		link_files $source $dest
-	done
+    reinstall=false
+    if [ $1 == 'reinstall' ]; then
+        reinstall=true
+    fi
+    for source in $(find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink); do
+        dest="$HOME/.$(basename ${source%.*})"
+        if [ -d $source ]; then
+            if ${reinstall}; then
+                rm -rf $dest
+            else
+                mv $dest $dest.bak
+            fi
+            source=$source/
+        fi
+        link_files $source $dest
+    done
 }
 
 main() {
     setup_gitconfig
-	install_dotfiles $1
+    install_dotfiles $1
 }
 
 main $@

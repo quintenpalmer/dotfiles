@@ -5,8 +5,8 @@ These are my dot files, yay!
 
 To set it all up run
 
-	./script/bootstrap
+    ./script/bootstrap
 
 And then install everyone
 
-	./script/install
+    ./script/install
