@@ -41,10 +41,10 @@ set incsearch
 set ts=4
 set sw=4
 set sts=4
-" set expandtab
+set expandtab
 
 " Make shift-tab insert real tabs
-" inoremap <S-Tab> <C-V><Tab>
+inoremap <S-Tab> <C-V><Tab>
 
 " Persistent undo!
 "if has('persistent_undo')
