@@ -2,17 +2,15 @@
 
 export NEWHOME=$HOME/.dotfiles
 
-# use ~/.localrc for local settings that are
-# local per machine and you don't want
-# in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
+RED="\[\033[31m\]"
+GREEN="\[\033[32m\]"
+PURPLE="\[\033[35m\]"
+WHITE="\[\033[37m\]"
+RESET="\[\033[0m\]"
 
 # Add to path
-PATH=$PATH:$NEWHOME/bin/
-PATH=$PATH:/usr/local/share/python
+export PATH=$PATH:$NEWHOME/bin/
+export PATH=$PATH:/usr/local/share/python
 
 # Custom Aliases
 alias ls='ls --color=auto'
@@ -25,24 +23,6 @@ alias py='python'
 alias py3='python3'
 alias grep='grep --color=auto'
 alias tree='tree -C -A'
-
-# git prompt information
-source $NEWHOME/git/git-prompt.sh
-
-# Prompt
-
-RED="\[\033[31m\]"
-GREEN="\[\033[32m\]"
-PURPLE="\[\033[35m\]"
-RESET="\[\033[0m\]"
-
-# If you define HOST_AND_NAME you can override the default
-# of name@hostname
-if [[ -z "$PROMPT_COLOR" ]]; then
-    PROMPT_COLOR="$GREEN"
-fi
-
-PS1="${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
 
 # Env variables
 export PYTHONDONTWRITEBYTECODE=1
@@ -63,3 +43,27 @@ stty werase undef
 bind '\C-w:unix-filename-rubout'
 bind '\C-b:backward-word'
 bind '\C-f:forward-word'
+
+# Sourcing
+
+# git prompt information
+source $NEWHOME/git/git-prompt.sh
+
+# use ~/.localrc for local settings that are
+# local per machine and you don't want
+# in your public, versioned repo.
+
+# These will override anything defined previously
+if [[ -a ~/.localrc ]]; then
+  source ~/.localrc
+fi
+
+# Prompt
+
+# If you define PROMPT_COLOR you can override the default
+# of $GREEN
+if [[ -z "$PROMPT_COLOR" ]]; then
+    PROMPT_COLOR="$GREEN"
+fi
+
+PS1="${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
