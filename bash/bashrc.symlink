@@ -45,9 +45,20 @@ if [[ -z "$PROMPT_COLOR" ]]; then
     PROMPT_COLOR="$GREEN"
 fi
 
-PS1="\033[\${LINES};0H${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
+PS1="${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
 
 # Env variables
 export PYTHONDONTWRITEBYTECODE=1
 export TERM=xterm-color
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages/
+
+# Custom Functions
+
+function go_to_bottom() {
+    echo -e "\033[${LINES};0H"
+}
+
+
+# Custom bindings
+
+bind -x '"\C-l": clear; go_to_bottom'
