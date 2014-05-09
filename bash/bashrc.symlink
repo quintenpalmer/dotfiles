@@ -59,3 +59,5 @@ function go_to_bottom() {
 # Custom bindings
 
 bind -x '"\C-l": clear; go_to_bottom'
+bind '\C-b:backward-word'
+bind '\C-f:forward-word'
