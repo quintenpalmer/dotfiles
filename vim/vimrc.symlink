@@ -9,6 +9,9 @@ set modelines=0
 " We're using vim, not vi!
 set nocompatible
 
+" split to the right
+set splitright
+
 " Smarter backspace
 set backspace=indent,eol,start
 
