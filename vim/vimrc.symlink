@@ -9,6 +9,9 @@ set modelines=0
 " We're using vim, not vi!
 set nocompatible
 
+" show relative line numbers
+set rnu
+
 " split to the right
 set splitright
 
