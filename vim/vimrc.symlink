@@ -15,6 +15,9 @@ set rnu
 " split to the right
 set splitright
 
+" split to the bottom
+set splitbelow
+
 " Smarter backspace
 set backspace=indent,eol,start
 
