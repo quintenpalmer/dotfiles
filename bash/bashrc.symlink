@@ -71,3 +71,7 @@ if [[ -z "$PROMPT_COLOR" ]]; then
 fi
 
 PS1="${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
+
+function tinygitlog() {
+    git loggraph $(git merge-base $1 HEAD)..
+}
