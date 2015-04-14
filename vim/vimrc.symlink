@@ -11,6 +11,7 @@ set nocompatible
 
 " show relative line numbers
 set rnu
+set nu
 
 " split to the right
 set splitright
