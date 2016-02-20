@@ -8,3 +8,5 @@ fi
 # Go to the bottom of the scren on each login
 
 go_to_bottom
+
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
