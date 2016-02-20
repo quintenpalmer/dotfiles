@@ -9,6 +9,9 @@ set modelines=0
 " We're using vim, not vi!
 set nocompatible
 
+" Use /bin/sh over /bin/bash or something similar
+set shell=/bin/sh
+
 " show relative line numbers
 set rnu
 set nu
@@ -102,8 +105,27 @@ map L :tabn<cr>
 
 " runtimepath for my beautiful haskell
 set runtimepath+=~/.dotfiles/vim/vim2hs
+set runtimepath+=~/.dotfiles/vim/elm.vim
+set runtimepath+=~/.vim/bundle/elmvim
 
 let g:haskell_conceal_wide = 0
 let g:haskell_conceal = 0
 let g:haskell_conceal_enumerations = 0
 let g:jmacro_conceal = 0
+
+execute pathogen#infect()
+
+" Synastic stuff
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+" Control P
+
+let g:ctrlp_custom_ignore = 'dist'
