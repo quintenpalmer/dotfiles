@@ -10,7 +10,6 @@ RESET="\[\033[0m\]"
 
 # Add to path
 export PATH=$PATH:$NEWHOME/bin/
-export PATH=$PATH:/usr/local/share/python
 
 # Custom Aliases
 alias ls='ls --color=auto'
