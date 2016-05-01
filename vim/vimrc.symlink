@@ -6,8 +6,8 @@ set clipboard=unnamedplus
 " Don't read modelines to avoid potentially malicious commands
 set modelines=0
 
-" We're using vim, not vi!
-set nocompatible
+" Use /bin/sh over /bin/bash or something similar
+set shell=/bin/sh
 
 " show relative line numbers
 set rnu
@@ -99,10 +99,40 @@ map <C-h> <C-w><Left>
 map H :tabp<cr>
 map L :tabn<cr>
 
-" runtimepath for my beautiful haskell
-set runtimepath+=~/.dotfiles/vim/vim2hs
 
-let g:haskell_conceal_wide = 0
-let g:haskell_conceal = 0
-let g:haskell_conceal_enumerations = 0
-let g:jmacro_conceal = 0
+" vim plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/lambdatoast/elm.vim'
+
+Plug 'https://github.com/neovimhaskell/nvim-hs'
+
+Plug 'https://github.com/benekastah/neomake'
+
+Plug 'https://github.com/kien/ctrlp.vim'
+
+call plug#end()
+
+"let g:haskell_conceal_wide = 0
+"let g:haskell_conceal = 0
+"let g:haskell_conceal_enumerations = 0
+"let g:jmacro_conceal = 0
+
+"execute pathogen#infect()
+
+" Synastic stuff
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+" Control P
+
+"let g:ctrlp_custom_ignore = 'dist'
+
+au BufWritePost *.elm ElmMakeFile("Main.elm")

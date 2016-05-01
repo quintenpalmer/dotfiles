@@ -1,0 +1,1 @@
+/home/quinten/.vimrc
