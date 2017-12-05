@@ -100,7 +100,7 @@ map <c-space> :set scroll=0<CR>:set scroll^=2<CR>:set scroll-=1<CR><C-U>:set scr
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
+map <C-g> <C-w><Left>
 
 " Map H and L to tab buffer movement
 map H :tabp<cr>
