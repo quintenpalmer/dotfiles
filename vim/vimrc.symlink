@@ -13,6 +13,9 @@ set nocompatible
 set nu
 set rnu
 
+" don't wrap lines that are longer than the buffer is wide
+set nowrap
+
 " split to the right
 set splitright
 
