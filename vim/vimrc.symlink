@@ -111,6 +111,23 @@ map <C-p> :FZF<cr>
 " runtimepath for my beautiful haskell
 set runtimepath+=~/.dotfiles/vim/vim2hs
 
+call plug#begin('~/.vim/plugged')
+Plug 'git@github.com:ElmCast/elm-vim.git'
+Plug 'git@github.com:vim-syntastic/syntastic.git'
+Plug 'git@github.com:junegunn/fzf.vim.git'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'git@github.com:neovimhaskell/haskell-vim.git'
+Plug 'git@github.com:rust-lang/rust.vim.git'
+Plug 'git@github.com:tpope/vim-fugitive.git'
+Plug 'git@github.com:airblade/vim-gitgutter.git'
+Plug 'git@github.com:fatih/vim-go.git'
+Plug 'git@github.com:prettier/vim-prettier.git'
+Plug 'git@github.com:racer-rust/vim-racer.git'
+Plug 'git@github.com:tpope/vim-rhubarb.git'
+Plug 'git@github.com:pangloss/vim-javascript.git'
+call plug#end()
+
 let g:haskell_conceal_wide = 0
 let g:haskell_conceal = 0
 let g:haskell_conceal_enumerations = 0
