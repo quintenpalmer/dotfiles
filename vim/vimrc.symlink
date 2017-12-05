@@ -108,9 +108,6 @@ map L :tabn<cr>
 
 map <C-p> :FZF<cr>
 
-" runtimepath for my beautiful haskell
-set runtimepath+=~/.dotfiles/vim/vim2hs
-
 call plug#begin('~/.vim/plugged')
 Plug 'git@github.com:ElmCast/elm-vim.git'
 Plug 'git@github.com:vim-syntastic/syntastic.git'
