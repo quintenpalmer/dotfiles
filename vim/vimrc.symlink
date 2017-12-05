@@ -106,6 +106,8 @@ map <C-g> <C-w><Left>
 map H :tabp<cr>
 map L :tabn<cr>
 
+map <C-p> :FZF<cr>
+
 " runtimepath for my beautiful haskell
 set runtimepath+=~/.dotfiles/vim/vim2hs
 
