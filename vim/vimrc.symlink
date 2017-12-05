@@ -156,3 +156,8 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+"prettierrc
+let g:prettier#config#config_precedence = 'prefer-file'
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md Prettier
