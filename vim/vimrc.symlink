@@ -10,6 +10,7 @@ set modelines=0
 set nocompatible
 
 " show relative line numbers
+set nu
 set rnu
 
 " split to the right
