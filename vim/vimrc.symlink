@@ -41,6 +41,9 @@ set ruler
 syntax on
 set hlsearch
 
+syntax enable
+filetype plugin on
+
 " Show matching brackets
 set showmatch
 " Case insensitive matching
