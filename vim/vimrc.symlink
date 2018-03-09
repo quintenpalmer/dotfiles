@@ -149,6 +149,12 @@ let g:go_highlight_build_constraints = 1
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+let g:rustfmt_autosave = 1
+set hidden
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+
 "prettierrc
 let g:prettier#config#config_precedence = 'prefer-file'
 let g:prettier#autoformat = 0
