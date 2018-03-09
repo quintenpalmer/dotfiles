@@ -41,6 +41,7 @@
 
 [merge]
     tool = vimdiff
+	ff = false
 [pager]
 	log = diff-highlight | git-less
 	show = diff-highlight | git-less
