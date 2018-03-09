@@ -10,7 +10,7 @@
     ui = auto
 [core]
     editor = vim
-    pager = less -+F
+    pager = "git-less"
     excludesfile = ~/.gitignore
 [alias]
     loggraph  = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
@@ -24,3 +24,9 @@
 
 [merge]
     tool = vimdiff
+[pager]
+	log = diff-highlight | git-less
+	show = diff-highlight | git-less
+	diff = diff-highlight | git-less
+[interactive]
+	diffFilter = diff-highlight
