@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo "must give me a command"
+    exit
+fi
+
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+RESET="\033[0m"
+
+command=$1
+params='exit'
+
+while true; do
+    echo -e -n " ${GREEN}∞${RESET} ${RED}\$${RESET} ${command} "
+    read -e params
+    if [ $params == "exit" ]; then break; fi;
+    $command $params
+    params="exit"
+done
+echo "exiting"
