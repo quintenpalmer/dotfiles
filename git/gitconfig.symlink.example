@@ -9,7 +9,7 @@
 [color]
     ui = auto
 [core]
-    editor = vim
+    editor = nvim
     pager = "git-less"
     excludesfile = ~/.gitignore
 [alias]
