@@ -48,6 +48,7 @@ bind '\C-f:forward-word'
 
 # git prompt information
 source $NEWHOME/git/git-prompt.sh
+source $NEWHOME/git/git-completion.bash
 
 # use ~/.localrc for local settings that are
 # local per machine and you don't want
