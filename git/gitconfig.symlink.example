@@ -26,6 +26,10 @@
     pullpf = pull --ff-only --prune
     ppf    = pull --ff-only --prune
 
+    rebase-latest-master = !REF=$(git symbolic-ref --short HEAD) && git checkout master && git pull --ff-only && git checkout "$REF" && git rebase master
+    rlm                  = !REF=$(git symbolic-ref --short HEAD) && git checkout master && git pull --ff-only && git checkout "$REF" && git rebase master
+
+
     b   = branch
     brn = branch --no-merged
     brm = branch --merged
