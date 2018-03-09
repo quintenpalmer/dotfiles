@@ -23,7 +23,9 @@
 
     logrange  = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
     st = status
-    pullfp = pull --ff-only --prune
+
+    pullpf = pull --ff-only --prune
+    ppf    = pull --ff-only --prune
 
 [merge]
     tool = vimdiff
