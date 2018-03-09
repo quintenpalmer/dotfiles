@@ -4,6 +4,7 @@ export NEWHOME=$HOME/.dotfiles
 
 RED="\[\033[31m\]"
 GREEN="\[\033[32m\]"
+BLUE="\[\033[34m\]"
 PURPLE="\[\033[35m\]"
 WHITE="\[\033[37m\]"
 RESET="\[\033[0m\]"
@@ -67,4 +68,28 @@ if [[ -z "$PROMPT_COLOR" ]]; then
     PROMPT_COLOR="$GREEN"
 fi
 
-PS1="${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
+PROMPT_COMMAND=__prompt_command
+
+__prompt_command() {
+    local EXIT=$?
+    if [ $EXIT != 0 ]; then
+        EXIT="${RED}${EXIT}${RESET}"
+    else
+        EXIT="${GREEN}${EXIT}${RESET}"
+    fi
+
+    local DIRTY_GIT
+    if [ -z "$(git status 2>/dev/null)" ]; then
+        DIRTY_GIT=""
+    else
+        DIRTY_GIT=$(git st --porcelain | grep -e "^M" -e "^ M" -e "^ D" -e "^D" | wc -l)
+        if [ $DIRTY_GIT != 0 ]; then
+            DIRTY_GIT=" ${RED}*${RESET}"
+        else
+            DIRTY_GIT=" ${GREEN}*${RESET}"
+        fi
+	fi
+
+    PS1="\$(abr_path.py)${DIRTY_GIT}$GREEN\$(__git_ps1)$RESET $BLUE($(git show --pretty=format:'%h' --no-patch))$RESET \u@\h $EXIT \t \n$RED \$ $RESET"
+}
+PS2="${PROMPT_COLOR}\u@\h$RESET"
