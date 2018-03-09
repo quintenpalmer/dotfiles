@@ -15,9 +15,12 @@
 [alias]
     loggraph  = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
     lg        = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
+
     logall    = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset' --all
-    logorigin = log         --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset' origin/master^..
-    lo        = log         --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset' origin/master^..
+
+    logorigin = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset' origin/master~2..
+    lo        = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset' origin/master~2..
+
     logrange  = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
     st = status
     pullfp = pull --ff-only --prune
