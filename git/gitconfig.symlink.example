@@ -22,10 +22,18 @@
     lo        = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset' origin/master~2..
 
     logrange  = log --graph --pretty=format:'%Cred%h%Creset %s %Cred%d%Creset %Cgreen%an%Creset - %C(bold blue)(%cr)%Creset'
-    st = status
 
     pullpf = pull --ff-only --prune
     ppf    = pull --ff-only --prune
+
+    b   = branch
+    brn = branch --no-merged
+    brm = branch --merged
+    co  = checkout
+    st  = status
+    rb  = rebase
+    cp  = cherry-pick
+
 
 [merge]
     tool = vimdiff
