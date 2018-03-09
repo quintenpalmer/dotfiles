@@ -4,6 +4,7 @@ export NEWHOME=$HOME/.dotfiles
 
 RED="\[\033[31m\]"
 GREEN="\[\033[32m\]"
+BLUE="\[\033[34m\]"
 PURPLE="\[\033[35m\]"
 WHITE="\[\033[37m\]"
 RESET="\[\033[0m\]"
@@ -18,7 +19,7 @@ alias la='ls -a'
 alias lr='ls -R'
 alias ll='ls -l'
 alias li='ls --ignore=__init__.py'
-alias vi='vim -p'
+alias vi='nvim -p'
 alias py='python'
 alias py3='python3'
 alias grep='grep --color=auto'
@@ -48,6 +49,7 @@ bind '\C-f:forward-word'
 
 # git prompt information
 source $NEWHOME/git/git-prompt.sh
+source $NEWHOME/git/git-completion.bash
 
 # use ~/.localrc for local settings that are
 # local per machine and you don't want
@@ -66,4 +68,48 @@ if [[ -z "$PROMPT_COLOR" ]]; then
     PROMPT_COLOR="$GREEN"
 fi
 
-PS1="${PROMPT_COLOR}\u@\h$RESET \$(abr_path.py)$GREEN\$(__git_ps1)$RED \$ $RESET"
+PROMPT_COMMAND=__prompt_command
+
+__prompt_command() {
+    local EXIT=$?
+    if [ $EXIT != 0 ]; then
+        EXIT="${RED}${EXIT}${RESET}"
+    else
+        EXIT="${GREEN}${EXIT}${RESET}"
+    fi
+
+    local DIRTY_GIT
+    if [ -z "$(git status 2>/dev/null)" ]; then
+        DIRTY_GIT=""
+    else
+        DIRTY_GIT=$(git st --porcelain | grep -e "^M" -e "^ M" -e "^ D" -e "^D" | wc -l)
+        if [ $DIRTY_GIT != 0 ]; then
+            DIRTY_GIT=" ${RED}*${RESET}"
+        else
+            DIRTY_GIT=" ${GREEN}*${RESET}"
+        fi
+	fi
+
+    PS1="\$(abr_path.py)${DIRTY_GIT}$GREEN\$(__git_ps1)$RESET $BLUE($(git show --pretty=format:'%h' --no-patch))$RESET \u@\h $EXIT \t \n$RED \$ $RESET"
+}
+PS2="${PROMPT_COLOR}\u@\h$RESET"
+
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+HISTFILESIZE=1000000000
+HISTSIZE=1000000000
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
