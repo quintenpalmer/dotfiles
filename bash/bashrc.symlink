@@ -109,4 +109,7 @@ man() {
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+HISTFILESIZE=1000000000
+HISTSIZE=1000000000
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
