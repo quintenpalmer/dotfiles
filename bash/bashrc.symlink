@@ -79,8 +79,10 @@ __prompt_command() {
     fi
 
     local DIRTY_GIT
+    local COMMIT_HASH
     if [ -z "$(git status 2>/dev/null)" ]; then
         DIRTY_GIT=""
+        COMMIT_HASH=""
     else
         DIRTY_GIT=$(git st --porcelain | grep -e "^M" -e "^ M" -e "^ D" -e "^D" | wc -l)
         if [ $DIRTY_GIT != 0 ]; then
@@ -88,9 +90,10 @@ __prompt_command() {
         else
             DIRTY_GIT=" ${GREEN}*${RESET}"
         fi
+        COMMIT_HASH=" $BLUE($(git show --pretty=format:'%h' --no-patch))$RESET"
 	fi
 
-    PS1="\$(abr_path.py)${DIRTY_GIT}$GREEN\$(__git_ps1)$RESET $BLUE($(git show --pretty=format:'%h' --no-patch))$RESET \u@\h $EXIT \t \n$RED \$ $RESET"
+    PS1="\$(abr_path.py)${DIRTY_GIT}$GREEN\$(__git_ps1)$RESET${COMMIT_HASH} \u@\h $EXIT \t \n$RED \$ $RESET"
 }
 PS2="${PROMPT_COLOR}\u@\h$RESET"
 
