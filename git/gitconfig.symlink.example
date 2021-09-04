@@ -4,6 +4,8 @@
 [user]
     name = AUTHORNAME
     email = AUTHOREMAIL
+[init]
+	defaultBranch = main
 [push]
     default = current
 [color]
