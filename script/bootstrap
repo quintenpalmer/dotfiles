@@ -3,7 +3,7 @@
 set -e
 
 ME=$(basename $0)
-DOTFILES_ROOT="$(dirname $(python -c 'import os,sys;print os.path.realpath(sys.argv[1])' ${ME}))"
+DOTFILES_ROOT="$(dirname $(python -c 'import os,sys;print(os.path.realpath(sys.argv[1]))' ${ME}))"
 
 info() {
     printf "  [ \033[00;34m..\033[0m ] $1"
