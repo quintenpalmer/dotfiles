@@ -14,11 +14,12 @@ export PATH=$PATH:$NEWHOME/bin/
 export PATH=$PATH:/usr/local/share/python
 
 # Custom Aliases
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias lr='ls -R'
-alias ll='ls -l'
-alias li='ls --ignore=__init__.py'
+alias l='/usr/bin/ls'
+alias ls='lsd'
+alias la='lsd -A'
+alias lr='l -R'
+alias ll='lsd -l'
+#alias li='ls --ignore=__init__.py'
 alias vi='nvim -p'
 alias py='python'
 alias py3='python3'
