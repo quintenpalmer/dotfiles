@@ -5,6 +5,15 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  #export XDG_CURRENT_DESKTOP=sway
+  exec ssh-agent sway
+  #eval $(gnome-keyring-daemon --start)
+  #export SSH_AUTH_SOCK
+  #sway
+  #echo hi
+fi
+
 # Go to the bottom of the scren on each login
 
 go_to_bottom
