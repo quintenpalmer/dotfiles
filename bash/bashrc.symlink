@@ -94,7 +94,7 @@ __prompt_command() {
         COMMIT_HASH=" $BLUE($(git show --pretty=format:'%h' --no-patch))$RESET"
 	fi
 
-    PS1="\$(abr_path.py)${DIRTY_GIT}$GREEN\$(__git_ps1)$RESET${COMMIT_HASH} \u@\h $EXIT \t \n$RED \$ $RESET"
+    PS1="${BLUE}┏━${RESET} \$(abr_path.py)${DIRTY_GIT}$GREEN\$(__git_ps1)$RESET${COMMIT_HASH} \u ${BLUE}∫${RESET} \h $EXIT \t \n${BLUE}┗━▶${RESET} $RED\$ $RESET"
 }
 PS2="${PROMPT_COLOR}\u@\h$RESET"
 
