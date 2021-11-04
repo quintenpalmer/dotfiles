@@ -117,3 +117,5 @@ HISTFILESIZE=1000000000
 HISTSIZE=1000000000
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+go_to_bottom
